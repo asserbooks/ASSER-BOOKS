@@ -1,0 +1,55 @@
+ASSER BOOKS — Email Setup (5 minutes)
+=====================================
+
+When a customer submits the contact form, TWO emails are sent:
+
+  1. TO YOU (asserbooks@gmail.com)
+     Subject: "New Bookkeeping Inquiry from [Client Name]"
+     Contains: name, email, phone, company, service, message, etc.
+
+  2. TO THE CUSTOMER
+     Subject: "Thank You for Contacting ASSER BOOKS"
+     Confirmation that you received their inquiry.
+
+
+STEP 1 — Create a Gmail App Password
+-------------------------------------
+1. Sign in to asserbooks@gmail.com
+2. Go to: https://myaccount.google.com/apppasswords
+   (You must have 2-Step Verification enabled on the Google account)
+3. Click "Create" → App name: "ASSER BOOKS Website"
+4. Copy the 16-character password (looks like: abcd efgh ijkl mnop)
+
+
+STEP 2 — Add the password to .env
+----------------------------------
+1. Open the file:  .env  (in this folder)
+2. Find this line:
+     SMTP_PASS=PASTE_YOUR_GMAIL_APP_PASSWORD_HERE
+3. Replace PASTE_YOUR_GMAIL_APP_PASSWORD_HERE with your App Password
+   (no spaces — e.g. abcdefghijklmnop)
+4. Save the file
+
+
+STEP 3 — Restart the website
+-----------------------------
+1. Close any running server window
+2. Double-click:  OPEN-WEBSITE.bat
+3. You should see:  "Email: ENABLED — inquiries go to asserbooks@gmail.com"
+
+
+STEP 4 — Test the form
+----------------------
+1. Open http://localhost:3000
+2. Go to Contact and submit a test inquiry
+3. Check asserbooks@gmail.com inbox (and Spam folder)
+
+
+TROUBLESHOOTING
+---------------
+- "Invalid login" → Wrong App Password. Create a new one and update .env
+- "Less secure apps" → Gmail no longer supports this. Use App Password only.
+- Email not arriving → Check Spam. Wait 1–2 minutes.
+- Form says "email not configured" → SMTP_PASS still says PASTE_YOUR_...
+
+Inquiries are always backed up in:  data/inquiries.json
